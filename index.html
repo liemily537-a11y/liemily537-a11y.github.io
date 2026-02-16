@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -61,6 +61,13 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
 
+        nav .nav-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
         nav ul {
             list-style: none;
             display: flex;
@@ -82,6 +89,36 @@
 
         nav a:hover {
             color: var(--primary-color);
+        }
+
+        .lang-switcher {
+            display: flex;
+            gap: 10px;
+            padding: 15px 20px;
+            position: absolute;
+            right: 20px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .lang-btn:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .lang-btn.active {
+            background: var(--primary-color);
+            color: white;
         }
 
         section {
@@ -121,12 +158,13 @@
         }
 
         .profile-image {
-            width: 100%;
-            max-width: 300px;
+            width: 300px;
+            height: 300px;
             border-radius: 50%;
             margin: 0 auto;
             display: block;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            object-fit: cover;
         }
 
         .about-text {
@@ -250,6 +288,11 @@
                 grid-template-columns: 1fr;
             }
 
+            nav .nav-container {
+                flex-direction: column;
+                position: relative;
+            }
+
             nav ul {
                 flex-direction: column;
                 align-items: center;
@@ -257,6 +300,12 @@
 
             nav li {
                 margin: 5px 0;
+            }
+
+            .lang-switcher {
+                position: relative;
+                right: auto;
+                padding: 10px 0;
             }
         }
 
@@ -269,34 +318,36 @@
     <header>
         <div class="container">
             <h1>Emily Li</h1>
-            <p>NUS 硕士一年级学生 | 探索知识，追求卓越</p>
+            <p data-zh="NUS 硕士一年级学生 | 探索知识，追求卓越" data-en="NUS Master's Year 1 Student | Exploring Knowledge, Pursuing Excellence"></p>
         </div>
     </header>
 
     <nav>
-        <div class="container">
+        <div class="container nav-container">
             <ul>
-                <li><a href="#about">关于我</a></li>
-                <li><a href="#education">教育背景</a></li>
-                <li><a href="#skills">技能与兴趣</a></li>
-                <li><a href="#contact">联系方式</a></li>
+                <li><a href="#about" data-zh="关于我" data-en="About Me"></a></li>
+                <li><a href="#education" data-zh="教育背景" data-en="Education"></a></li>
+                <li><a href="#skills" data-zh="技能与兴趣" data-en="Skills & Interests"></a></li>
+                <li><a href="#contact" data-zh="联系方式" data-en="Contact"></a></li>
             </ul>
+            <div class="lang-switcher">
+                <button class="lang-btn" data-lang="zh">中文</button>
+                <button class="lang-btn active" data-lang="en">English</button>
+            </div>
         </div>
     </nav>
 
     <section id="about">
         <div class="container">
-            <h2 class="section-title">关于我</h2>
+            <h2 class="section-title" data-zh="关于我" data-en="About Me"></h2>
             <div class="about-content">
                 <div>
-                    <div style="width: 300px; height: 300px; background: linear-gradient(135deg, #6366f1, #8b5cf6); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; color: white; font-size: 4rem; font-weight: bold;">
-                        EL
-                    </div>
+                    <img src="emily.JPG" alt="Emily Li" class="profile-image">
                 </div>
                 <div class="about-text">
-                    <p>你好！我是Emily，目前在新加坡国立大学（NUS）攻读硕士学位，是一名充满热情和好奇心的学生。</p>
-                    <p>我热爱学习，享受探索新知识的过程。在学术道路上，我不断挑战自己，追求卓越。我相信通过持续的努力和学习，能够为社会创造价值。</p>
-                    <p>除了学术研究，我也关注个人成长和全面发展。我期待在这个平台上分享我的学习经历、项目成果和思考感悟。</p>
+                    <p data-zh="你好！我是Emily，目前在新加坡国立大学（NUS）攻读硕士学位，是一名充满热情和好奇心的学生。" data-en="Hello! I'm Emily, currently pursuing a Master's degree at the National University of Singapore (NUS), and I'm a passionate and curious student."></p>
+                    <p data-zh="我热爱学习，享受探索新知识的过程。在学术道路上，我不断挑战自己，追求卓越。我相信通过持续的努力和学习，能够为社会创造价值。" data-en="I love learning and enjoy the process of exploring new knowledge. On my academic journey, I continuously challenge myself and pursue excellence. I believe that through persistent effort and learning, I can create value for society."></p>
+                    <p data-zh="除了学术研究，我也关注个人成长和全面发展。我期待在这个平台上分享我的学习经历、项目成果和思考感悟。" data-en="Beyond academic research, I also focus on personal growth and comprehensive development. I look forward to sharing my learning experiences, project achievements, and reflections on this platform."></p>
                 </div>
             </div>
         </div>
@@ -304,45 +355,45 @@
 
     <section id="education">
         <div class="container">
-            <h2 class="section-title">教育背景</h2>
+            <h2 class="section-title" data-zh="教育背景" data-en="Education"></h2>
             <div class="education-item">
                 <h3>新加坡国立大学 (NUS)</h3>
-                <div class="degree">硕士学位</div>
-                <div class="period">2025年 - 至今（硕士一年级）</div>
+                <div class="degree" data-zh="硕士学位" data-en="Master's Degree"></div>
+                <div class="period" data-zh="2025年 - 至今（硕士一年级）" data-en="2025 - Present (Master's Year 1)"></div>
             </div>
             <div class="education-item">
                 <h3>悉尼大学 (University of Sydney)</h3>
-                <div class="degree">Bachelor of Arts - 心理学和数字文化双专业</div>
-                <div class="period">2022年 - 2025年</div>
+                <div class="degree" data-zh="Bachelor of Arts - 心理学和数字文化双专业" data-en="Bachelor of Arts - Double Major in Psychology and Digital Cultures"></div>
+                <div class="period" data-zh="2022年 - 2025年" data-en="2022 - 2025"></div>
             </div>
         </div>
     </section>
 
     <section id="skills">
         <div class="container">
-            <h2 class="section-title">技能与兴趣</h2>
+            <h2 class="section-title" data-zh="技能与兴趣" data-en="Skills & Interests"></h2>
             <div class="skills-grid">
                 <div class="skill-card">
-                    <h3>学术研究</h3>
+                    <h3 data-zh="学术研究" data-en="Academic Research"></h3>
                     <ul>
-                        <li>研究方法</li>
-                        <li>数据分析</li>
-                        <li>学术写作</li>
+                        <li data-zh="研究方法" data-en="Research Methods"></li>
+                        <li data-zh="数据分析" data-en="Data Analysis"></li>
+                        <li data-zh="学术写作" data-en="Academic Writing"></li>
                     </ul>
                 </div>
                 <div class="skill-card">
-                    <h3>技术技能</h3>
+                    <h3 data-zh="技术技能" data-en="Technical Skills"></h3>
                     <ul>
-                        <li>持续学习中</li>
-                        <li>开放探索</li>
+                        <li data-zh="持续学习中" data-en="Continuous Learning"></li>
+                        <li data-zh="开放探索" data-en="Open Exploration"></li>
                     </ul>
                 </div>
                 <div class="skill-card">
-                    <h3>个人兴趣</h3>
+                    <h3 data-zh="个人兴趣" data-en="Personal Interests"></h3>
                     <ul>
-                        <li>阅读</li>
-                        <li>学习新知识</li>
-                        <li>探索未知领域</li>
+                        <li data-zh="阅读" data-en="Reading"></li>
+                        <li data-zh="学习新知识" data-en="Learning New Knowledge"></li>
+                        <li data-zh="探索未知领域" data-en="Exploring Unknown Fields"></li>
                     </ul>
                 </div>
             </div>
@@ -351,11 +402,11 @@
 
     <section id="contact">
         <div class="container">
-            <h2 class="section-title">联系方式</h2>
+            <h2 class="section-title" data-zh="联系方式" data-en="Contact"></h2>
             <div class="contact-info">
-                <p>欢迎通过以下方式与我联系：</p>
+                <p data-zh="欢迎通过以下方式与我联系：" data-en="Feel free to reach out through the following channels:"></p>
                 <div class="contact-links">
-                    <a href="mailto:your-email@example.com" class="contact-link">邮箱联系</a>
+                    <a href="mailto:your-email@example.com" class="contact-link" data-zh="邮箱联系" data-en="Email"></a>
                     <a href="https://github.com/liemily537-a11y" class="contact-link">GitHub</a>
                 </div>
             </div>
@@ -369,6 +420,49 @@
     </footer>
 
     <script>
+        // 语言切换功能
+        const translations = {
+            zh: 'zh-CN',
+            en: 'en'
+        };
+
+        // 获取保存的语言偏好，默认为英语
+        let currentLang = localStorage.getItem('language') || 'en';
+
+        // 切换语言函数
+        function switchLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('language', lang);
+            
+            // 更新HTML lang属性
+            document.documentElement.lang = translations[lang];
+            
+            // 更新所有带data-zh和data-en属性的元素
+            document.querySelectorAll('[data-zh][data-en]').forEach(element => {
+                element.textContent = element.getAttribute(`data-${lang}`);
+            });
+            
+            // 更新语言按钮状态
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+        }
+
+        // 初始化语言
+        switchLanguage(currentLang);
+
+        // 绑定语言切换按钮事件
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+                switchLanguage(lang);
+            });
+        });
+
         // 平滑滚动
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
